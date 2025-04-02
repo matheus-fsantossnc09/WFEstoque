@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace WFCadastroProduto
 {
-    public partial class FormMenu : Form
+    public partial class FormListaProduto : Form
     {
-        public FormMenu()
+        public FormListaProduto()
         {
             InitializeComponent();
         }
 
-        private void menuCadastrar_Click(object sender, EventArgs e)
+        private void dtgListaProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FormCadProduto form = new FormCadProduto();
-            form.ShowDialog();
+            dtgListaProdutos.DataSource = Produto.ListaProdutos;
         }
     }
 }

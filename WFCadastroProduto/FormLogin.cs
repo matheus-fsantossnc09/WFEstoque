@@ -30,7 +30,7 @@ namespace WFCadastroProduto
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
-            foreach(Usuario us in Usuario.ListaUsuarios)
+            foreach (Usuario us in Usuario.ListaUsuarios)
             {
                 if (us.Login == txtLogin.Text && us.Senha == txtSenha.Text)
                 {
@@ -45,6 +45,12 @@ namespace WFCadastroProduto
         {
             MessageBox.Show(messagem, "Erro",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogar_Click(sender, e);
         }
     }
 }

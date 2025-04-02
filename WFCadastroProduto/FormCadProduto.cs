@@ -42,7 +42,32 @@ namespace WFCadastroProduto
                 Erro("Campos não preenchidos");
                 return;
             }
+            Produto produto = new Produto();
+            produto.Id = long.Parse(mskCodido.Text);
+            produto.Nome = txtNome.Text;
+            produto.Preco = nudPreco.Value;
+            produto.Quantidade = (int)nudQuantidade.Value;
+            produto.Status = rdbAtivo.Checked ? EStatus.Ativo : EStatus.Inativo;
 
+            Produto.ListaProdutos.Add(produto);
+
+            LimparCampos();
+
+            FormListaProduto from = new FormListaProduto();
+            from .ShowDialog();
+        }
+        private void LimparCampos()
+        {
+            txtNome.Clear();
+            rdbAtivo.Checked = false;
+            rdbInativo.Checked = false;
+            nudPreco.Value = 0;
+            nudQuantidade.Value = 0;
+
+
+            int totalLista = Produto.ListaProdutos.Count;
+            int novoCodigo = totalLista + 1;
+            mskCodido.Text = novoCodigo.ToString("D4");
         }
 
         private void FormCadProduto_Load(object sender, EventArgs e)
